@@ -27,26 +27,12 @@ const sql = require("sqlite");
 ,ti={}
 ,spee={};
 
-client.on('message',zaid => {
-   if(zaid.content === prefix + "closeroom") {
-   if(!zaid.channel.guild) return zaid.channel.send('**This command is only done on servers**');
-   if(!zaid.member.hasPermission('MANAGE_MESSAGES')) return zaid.channel.send('**:x: - No Permissions ! **');
-    zaid.channel.overwritePermissions(zaid.guild.id, {
-    SEND_MESSAGES: false
-    }).then(() => {
-    zaid.channel.send("**:white_check_mark: | Channel Closed :lock:**")
-});
-   }
-   if(zaid.content === prefix + "openroom") {
-   if(!zaid.channel.guild) return zaid.channel.send('**This command is only done on servers**');
-   if(!zaid.member.hasPermission('MANAGE_MESSAGES')) return zaid.channel.send(**:x: - No Permissions ! **');
-    zaid.channel.overwritePermissions(zaid.guild.id, {
-    SEND_MESSAGES: true
-    }).then(() => {
-    zaid.channel.send("**:white_check_mark: | Channel Opened :unlock:**")
- });
- }      
-});
+client.on('message', async message => {
+    if(message.content.startsWith(prefix + "invite")) {
+        const invite = `**Invite: [No Any Perms](${await client.generateInvite()})\nInvite: [Administrator Perm](${await client.generateInvite(['ADMINISTRATOR'])})**`;
+        message.channel.send(invite)
+    }
+})
 
 
 // THIS  MUST  BE  THIS  WAY
