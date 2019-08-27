@@ -27,12 +27,14 @@ const sql = require("sqlite");
 ,ti={}
 ,spee={};
 
-client.on('message', async message => {
-    if(message.content.startsWith(prefix + "invite")) {
-        const invite = `**Invite: [No Any Perms](${await client.generateInvite()})\nInvite: [Administrator Perm](${await client.generateInvite(['ADMINISTRATOR'])})**`;
-        message.channel.send(invite)
-    }
-})
+client.on('message', message => {
+  if (message.channel.id === "ايدي الروم") {
+    message.react('☑')
+      .then(() => {
+        message.react('🚫')
+      });
+  }
+});
 
 
 // THIS  MUST  BE  THIS  WAY
