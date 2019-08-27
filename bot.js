@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+var prefix ="-";
 const db = require('quick.db');
 const client = new Discord.Client();
 const giphy = require('giphy-api')();
