@@ -185,6 +185,13 @@ client.on('message',async message => {
   }
 });
 
+client.on('message', async message => {
+    if(message.content.startsWith(prefix + "invite")) {
+        const invite = `**Invite: [No Any Perms](${await client.generateInvite()})\nInvite: [Administrator Perm](${await client.generateInvite(['ADMINISTRATOR'])})**`;
+        message.channel.send(invite)
+    }
+})
+
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
